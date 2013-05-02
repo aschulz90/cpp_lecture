@@ -48,7 +48,7 @@ char** createSomeMap()
 
 	char** map = new char*[80 * MAP_SIZE_Y];
 	// Create and fill the map
-	for( int x=0; x<80; ++x )
+	for( int x=0; x<MAP_SIZE_X; ++x )
 	{
 		map[x] = new char[MAP_SIZE_Y];
 		fillColumn( *map+x, x );
@@ -65,7 +65,7 @@ void drawMap( char** map )
 	{
 		for( int x=0; x<60; ++x )
 		{
-			std::printf( "%c", ASCII_ART[ map[y][x] ] );
+			std::printf( "%c", ASCII_ART[ map[x][y] ] );
 		}
 		std::cout << '\n';
 	}
