@@ -43,7 +43,7 @@ static void fillColumn( char* destination, unsigned int mapXCoordinate )
 ///		fillColumn method.
 char** createSomeMap()
 {
-	for( int i=0; i<WHITE_NOISE_SIZE; ++i )
+	for( int i=0; i<WHITE_NOISE_SIZE; i++ )
 		whiteNoise[i] = rand()*255/RAND_MAX;
 
 	char** map = new char*[80 * MAP_SIZE_Y];

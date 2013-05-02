@@ -14,8 +14,8 @@ int main()
 	// same landscape each time (e.g. for debugging purposes)
 	srand( clock() );
 
-	char** map = createSomeMap();
-
+	char** map = new char*;
+	map = createSomeMap();
 	do
 	{
 		drawMap( map );
