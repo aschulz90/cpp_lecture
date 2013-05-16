@@ -67,23 +67,18 @@ int main()
 	BiA::toggle( A2, 2 );
 	BiA::toggle( A2, 18 );
 	BiA::toggle( A2, 63 );
-
-	bool tmp = BiA::get( A2, 23 );
-	BiA::set( A1, 1, true);
-	//BiA::set( A1, 1, false);
-
-	//BiA::set( A1, 1, BiA::get( A2, 23 ) );
+	BiA::set( A1, 1, BiA::get( A2, 23 ) );
 	BiA::set( A2, 11, BiA::get( A1, 3 ) );
 
-	outputHelper( A1, true );
+
 
 	BiA::BitArray A3 = BiA::concatenate( A1, A2 );
+	outputHelper( A3, true );
 	uint32_t expectedResult[] = { 108, 0xe460b8c3, 0x5ffd3157, 0xbde25ffd, 0x00000f79 };
-	
 	outputHelper( expectedResult, true );
 	// If the program stops here one or more of your operators didn't
 	// work.
-	//assert( memcmp( A3, expectedResult, 4*5 ) == 0 );
+	assert( memcmp( A3, expectedResult, 4*5 ) == 0 );
 
 	// If you get a segmentation/.. error here you have written into the
 	// wrong memory before.

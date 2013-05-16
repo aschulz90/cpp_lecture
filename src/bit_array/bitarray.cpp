@@ -28,8 +28,8 @@ bool BiA::get( const BitArray& array, int index ){
 }
 
 void BiA::set( BitArray& array, int index, bool value ){
-	index %= getSize(array);
-	if (value) array[1+index/32] |= 1<<(index%32); else	array[1+index/32] &= !(1<<(index%32));
+	//index %= getSize(array);
+	if (value) array[1+index/32] |= 1<<(index%32); else	array[1+index/32] &= ~(1<<(index%32));
 }
 
 void BiA::toggle( BitArray& array, int index ){
