@@ -3,7 +3,7 @@
 
 std::ostream& operator<< (std::ostream &out, Math::Vector &right){
 	
-	for (int i = 0; i < right.getNumElements; i++) out << right[i] << std::endl;
+	for (unsigned int i = 0; i < right.getNumElements(); i++) out << (float) right[i] << std::endl;
 }
 inline Math::Vector operator + (const Math::Vector& left, const Math::Vector& right);
 inline Math::Vector operator - (const Math::Vector& left, const Math::Vector& right);

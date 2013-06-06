@@ -16,10 +16,10 @@ namespace Math
 		/// Create empty from size, filled with a given value.
 		/// \param size		vectors size
 		/// \param value	value applied to all elements
-		explicit Vector(unsigned int size, Element value = 0){
-			//m_elements mit Größe size initialisieren
-			//alle Elemente mit value füllen
-			m_elements = ; 
+		explicit Vector(unsigned int size, Element value = 0): m_size(size), m_elements(new Element[size]){
+			for (unsigned int i = 0; i < size; i++){
+				m_elements[i]=value;
+			}
 		}
 
 		/// Copy constructor.
@@ -29,7 +29,7 @@ namespace Math
 
 		/// Destructor, releases allocated memory.
 		~Vector(){
-			for (int i = 0; i < m_size; i++){
+			for (unsigned int i = 0; i < m_size; i++){
 				delete &m_elements[i];
 			}
 			delete &m_elements;
@@ -42,10 +42,13 @@ namespace Math
 		/// \param right	assigned Math::Vector
 		/// \return Reference to this
 		Vector& operator = (const Vector& right){
-			for (int i = 0; i < m_size; i++){
+			for (unsigned int i = 0; i < m_size; i++){
 				delete &m_elements[i];
 			}
-			//m_elements neu erstellen und Werte kopieren
+			m_elements.reset(new m_elements[right.getNumElements()]);
+			for (unsigned int i = 0; i < right.getNumElements(); i++){
+				m_elements[i] = right[i];
+			}
 			return *this;
 		}
 
@@ -53,14 +56,22 @@ namespace Math
 		/// \param index	
 		/// \return Reference to last element if index is invalid 
 		Element operator [] (unsigned int index) const{
-			return m_elements[index];
+			if(index < m_size) {
+				return m_elements[index];
+			} else {
+				return m_elements[m_size-1];
+			}
 		}
 
 		/// Returns reference to element at a given position.
 		/// \param index	
 		/// \return Reference to last element if index is invalid
 		Element& operator [] (unsigned int index){
-			return m_elements[index];
+			if(index < m_size) {
+				return m_elements[index];
+			} else {
+				return m_elements[m_size-1];
+			}
 		}
 
 		// TODO: Insert additional Operators (here or global where necessary)

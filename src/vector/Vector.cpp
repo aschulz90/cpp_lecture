@@ -45,7 +45,7 @@ namespace Math
 	}
 
 	inline Vector operator * (Element left, const Vector& right){
-		Vector tmp = right;
+		Vector tmp(right);
 		for (int i = 0; i < right.getNumElements; i++){
 			tmp[i] = tmp[i] * left;
 		}
