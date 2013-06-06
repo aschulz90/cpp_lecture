@@ -11,9 +11,17 @@ namespace Collections
 		list = (IElement*) malloc(size+1);
 	}
 
-	ArrayList::ArrayList(ArrayList a)
+	ArrayList::ArrayList(SingleLinkedList a)
 	{
-		
+		int x = 0;
+		list = (IElement*) malloc(a.getNumElements);
+		auto it = a.getIterator();
+		while(it->current()){
+			list[x++] = (*it->current());
+			// Up to two steps (at least one)
+			it->next();
+		}
+		delete it;
 	}
 
 	ArrayList::~ArrayList()
@@ -67,5 +75,4 @@ namespace Collections
 	{
 		return new ListIterator( m_first );
 	}
-
 };

@@ -13,6 +13,12 @@ namespace Collections
 	}
 
 
+	SingleLinkedList::SingleLinkedList(ArrayList a){
+		for (int i=0; a.getNumElements; i++){
+			insert(a.get(i));
+		}
+	}
+
 	// Inserts elements at the front of the list.
 	void SingleLinkedList::insert( const IElement& newElement )
 	{
