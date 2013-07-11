@@ -18,6 +18,7 @@ namespace Collections
 		virtual ~ArrayList()
 		{
 			// TODO
+
 		}
 
 		void resize( unsigned int numInstances )
